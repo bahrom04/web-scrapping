@@ -12,10 +12,9 @@ data_list = []
 
 for card_div in card_divs:
     data_dict = {
-        'id': card_div['id'],
-        'title': card_div.find('h6', class_='css-16v5mdi er34gjf0').text,
-        'price': card_div.find('p', {'data-testid': 'ad-price'}).text,
-        'location_date': card_div.find('p', {'data-testid': 'location-date'}).text,
+        'title': card_div.find('h6', class_='css-1sw7q4x'),
+        'price': card_div.find('p', {'data-testid': 'ad-price'}),
+        'location_date': card_div.find('p', {'data-testid': 'location-date'}),
         'image_url': card_div.find('img')['src']
     }
 
@@ -47,8 +46,7 @@ for data_dict in data_list:
 
 #     # Extract data from the page and create a dictionary
 #     data_dict = {
-#         'id': soup.find('div', {'data-cy': 'l-card'})['id'],
-#         'title': soup.find('h6', class_='css-16v5mdi er34gjf0').text,
+#         'title': soup.find('h6', class_='css-1sw7q4x').text,
 #         'price': soup.find('p', {'data-testid': 'ad-price'}).text,
 #         'location_date': soup.find('p', {'data-testid': 'location-date'}).text,
 #         'image_url': soup.find('img')['src'],
