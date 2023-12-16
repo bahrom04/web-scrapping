@@ -4,6 +4,8 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.chrome.options import Options
+
 
 def main():
     
@@ -21,7 +23,9 @@ def main():
     '''
     location = 'Ташкент, Яккасарайский район'
 
-    driver = webdriver.Chrome()
+    options = Options()
+    options.add_experimental_option('detach', True) 
+    driver = webdriver.Chrome(options=options)
     driver.maximize_window()
     driver.get('https://uz.login.olx.com/?cc=eyJjYyI6MCwiZ3JvdXBzIjoiIn0%3D&client_id=2s42fsas18c0kbs55g4cpjccvf&code_challenge=J7Zjh3TZMaJdr1_dyYmCIxxNB1-yUolz212G2S17h8E&code_challenge_method=S256&redirect_uri=https%3A%2F%2Fwww.olx.uz%2Faccount%2Fcallback%2F&st=eyJzbCI6IjE4YmVkOTE3ZDU4eDUyNWQyNmU2IiwicyI6IjE4YzZkY2QyMGExeDYzNzE0MWY3IiwiY2MiOjAsImdyb3VwcyI6IiJ9&state=eyJyZWZlcnJlciI6Imh0dHBzOlwvXC93d3cub2x4LnV6XC9teWFjY291bnRcLyJ9')
 
@@ -49,7 +53,7 @@ def main():
 
     driver.find_element('id', 'title').send_keys(title)
 
-
+    # it works but shows an error
     category_button = WebDriverWait(driver, 10).until(
         EC.element_to_be_clickable((By.CLASS_NAME, 'css-1272b3n'))
     )
@@ -78,7 +82,8 @@ def main():
         )
     sub_sub_categories_button_final.click()
     sleep(3)
-
+    
+    driver.execute_script("window.scrollTo(0, 500)")
 
     driver.find_element('id', 'description').send_keys(description)
 
