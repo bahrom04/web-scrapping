@@ -37,7 +37,6 @@ def main():
     )
     login_button.click()
 
-    # Wait for the login process to complete (adjust the timeout as needed)
     WebDriverWait(driver, 10).until(EC.url_contains("www.olx.uz"))
     
     sleep(16)
@@ -83,6 +82,7 @@ def main():
     sub_sub_categories_button_final.click()
     sleep(3)
     
+     
     driver.execute_script("window.scrollTo(0, 500)")
 
     driver.find_element('id', 'description').send_keys(description)
